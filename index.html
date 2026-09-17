@@ -65,6 +65,7 @@
     .social-links {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 15px;
       list-style: none;
       padding: 0;
@@ -227,50 +228,18 @@
   <header>
     <div class="profile-container">
       <h1>GameDevGary</h1>
-      <p class="bio">Hey there! I'm a self-taught indie game developer. I make games, build tools, and create free assets for other devs. When I'm not messing around in Blender or Unreal Engine, I'm usually trying to figure out some new game mechanic.</p>
+      <p class="bio">Hey there! I'm a self-taught indie game developer. I make games, build tools, and create free assets for other devs.</p>
       
       <ul class="social-links">
-        <li><a href="https://gamedevgary.itch.io/">itch.io</a></li>
-        <li><a href="https://github.com/gamedevgary">GitHub</a></li>
+        <li><a href="https://gamedevgary.itch.io/" target="_blank">itch.io</a></li>
+        <li><a href="https://github.com/gamedevgary" target="_blank">GitHub</a></li>
+        <li><a href="https://www.youtube.com/@GameDevGary" target="_blank">YouTube</a></li>
       </ul>
     </div>
   </header>
 
   <div class="container">
     
-    <!-- Section: Games -->
-    <section>
-      <h2>Games & Projects</h2>
-      <div class="grid">
-        
-        <div class="card">
-          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=Scribbattle.io" alt="Scribbattle.io">
-          <div class="card-content">
-            <h3>Scribbattle.io</h3>
-            <p class="tagline">A multiplayer drawing and guessing game built for the web. Managed through GitHub and deployed via Render.</p>
-            <div class="tag-container">
-              <span class="badge">Web</span>
-              <span class="badge price">Free to Play</span>
-            </div>
-            <a href="https://github.com/gamedevgary" target="_blank" class="btn">View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=More+on+itch.io" alt="itch.io Profile">
-          <div class="card-content">
-            <h3>More Projects</h3>
-            <p class="tagline">Check out my itch.io page to see my latest jam games, prototypes, and experiments as they happen.</p>
-            <div class="tag-container">
-              <span class="badge">Indie Games</span>
-            </div>
-            <a href="https://gamedevgary.itch.io" target="_blank" class="btn">View my itch.io</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- Section: Assets & Tutorials -->
     <section>
       <h2>Assets & Tutorials</h2>
@@ -293,12 +262,39 @@
       </div>
     </section>
 
+    <!-- Section: Games -->
+    <section>
+      <h2>Games & Prototypes</h2>
+      <div class="grid">
+
+        <div class="card">
+          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=More+on+itch.io" alt="itch.io Profile">
+          <div class="card-content">
+            <h3>Current Projects</h3>
+            <p class="tagline">Check out my itch.io page to see my latest jam games, prototypes, and experiments as they happen.</p>
+            <div class="tag-container">
+              <span class="badge">Indie Games</span>
+            </div>
+            <a href="https://gamedevgary.itch.io" target="_blank" class="btn">View my itch.io</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Section: My Journey -->
     <section>
       <h2>My Dev Journey</h2>
       <div class="text-block">
-        <p>As a self-taught developer, my journey started from a simple curiosity about how game worlds were actually constructed. That curiosity quickly turned into a massive rabbit hole of 3D modeling, texturing, and engine workflows.</p>
-        <p>I spent a long time just learning the quirks of open-source tools like Blender and GIMP, figuring out how to get assets looking right in engines without artifacting. Now, I try to package up what I learn—whether that's a node setup in Blender or an entire project pipeline—so other devs don't have to hit the same roadblocks I did.</p>
+        <p>I started playing video games when I was 5 years old. The first games I remember playing are Legend of Zelda, Spyro, Crash Bandicoot, Mario, and Street Fighter. I'm 30 now, and I've played a lot of video games, and 15 years ago I decided to try to learn how to make them.</p>
+
+        <p>Started with googling in 2010, "how to make video games". Options at the time were licensing an expensive engine like Unreal or something, working at a company, or writing my own engine. Or use Unity and learn C#.</p>
+
+        <p>I googled C#, found a crash course, and taught myself programming. Downloaded Unity, started learning about 2D/3D scenes and how gameobjects and code go together and how to build them. I googled a lot of stuff about math, programming, art, computers, audio, design, story, cinematography, everything that goes into making games, I googled it. I have googled a lot.</p> 
+
+        <p>Learning game development or any kind of art or project you create with tools and your mind is the best way to learn anything. Learning how to teach yourself is the best skill to learn for anything.</p>
+
+        <p>From the time I started playing video games, to the time I started making them, to now, everything I studied and learned has changed so much in ways that were always impossible to predict and keep up with what "the best way" to do anything was.</p>
       </div>
     </section>
 
@@ -319,8 +315,8 @@
           <p>Hands down one of the best YouTube channels out there for weird, fast, and highly practical Blender node setups.</p>
         </li>
         <li>
-          <h3><a href="https://gamedevgary.itch.io/" target="_blank">Follow me on itch.io</a></h3>
-          <p>The best place to find my devlogs, leave comments, and see what assets or games I'm putting out next.</p>
+          <h3><a href="https://www.youtube.com/@GameDevGary" target="_blank">My YouTube Channel</a></h3>
+          <p>Subscribe to see my latest video tutorials, gameplay prototypes, and devlogs.</p>
         </li>
       </ul>
     </section>

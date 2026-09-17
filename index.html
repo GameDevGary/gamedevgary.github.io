@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameDevGary - Games, Assets, and Devlogs</title>
+  <title>GameDevGary - Indie Game Developer</title>
   <style>
     /* =========================================
        ITCH.IO INSPIRED STYLES
@@ -23,7 +23,7 @@
       background-color: var(--bg-color);
       color: var(--text-main);
       font-family: var(--font-family);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     a {
@@ -42,12 +42,12 @@
     header {
       background-color: var(--surface-color);
       border-bottom: 2px solid #1a1a1a;
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
     }
 
     .profile-container {
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
@@ -57,9 +57,9 @@
     }
 
     .bio {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .social-links {
@@ -72,11 +72,11 @@
 
     .social-links a {
       background: #1a1a1a;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 4px;
       font-weight: bold;
       color: var(--text-main);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .social-links a:hover {
@@ -106,7 +106,7 @@
        ========================================= */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 25px;
       margin-bottom: 60px;
     }
@@ -116,6 +116,8 @@
       border-radius: 4px;
       overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
@@ -133,31 +135,34 @@
     }
 
     .card-content {
-      padding: 15px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .card-content h3 {
-      margin: 0 0 5px 0;
-      font-size: 1.2rem;
+      margin: 0 0 8px 0;
+      font-size: 1.25rem;
     }
 
     .tagline {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       margin: 0 0 15px 0;
-      min-height: 40px;
+      flex-grow: 1;
     }
 
     .tag-container {
       display: flex;
       gap: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .badge {
       background: #444;
       font-size: 0.75rem;
-      padding: 3px 6px;
+      padding: 4px 8px;
       border-radius: 3px;
       color: #ddd;
     }
@@ -171,7 +176,7 @@
     .btn {
       display: block;
       text-align: center;
-      padding: 10px;
+      padding: 12px;
       background: var(--primary-color);
       color: #fff;
       border-radius: 3px;
@@ -183,11 +188,36 @@
     }
 
     /* =========================================
-       JOURNEY TEXT STYLING
+       TEXT BLOCKS & LISTS
        ========================================= */
-    .journey-text p {
+    .text-block p {
       font-size: 1.05rem;
       margin-bottom: 15px;
+    }
+
+    .resource-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .resource-list li {
+      background: var(--surface-color);
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 4px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .resource-list h3 {
+      margin: 0 0 5px 0;
+      font-size: 1.15rem;
+    }
+    
+    .resource-list p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -197,7 +227,7 @@
   <header>
     <div class="profile-container">
       <h1>GameDevGary</h1>
-      <p class="bio">Hey there! I make games, build tools, and create free assets for other devs. When I'm not messing around in Blender or Unreal Engine, I'm usually trying to figure out some new game mechanic.</p>
+      <p class="bio">Hey there! I'm a self-taught indie game developer. I make games, build tools, and create free assets for other devs. When I'm not messing around in Blender or Unreal Engine, I'm usually trying to figure out some new game mechanic.</p>
       
       <ul class="social-links">
         <li><a href="https://gamedevgary.itch.io/">itch.io</a></li>
@@ -214,31 +244,27 @@
       <div class="grid">
         
         <div class="card">
-          <!-- Replace src with your actual image path -->
-          <img class="card-media" src="assets/images/scribbattle.png" alt="Scribbattle.io" onerror="this.src='https://via.placeholder.com/600x337/111/fff?text=Scribbattle.io'">
+          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=Scribbattle.io" alt="Scribbattle.io">
           <div class="card-content">
             <h3>Scribbattle.io</h3>
-            <p class="tagline">A multiplayer drawing and guessing game built for the web.</p>
+            <p class="tagline">A multiplayer drawing and guessing game built for the web. Managed through GitHub and deployed via Render.</p>
             <div class="tag-container">
               <span class="badge">Web</span>
               <span class="badge price">Free to Play</span>
             </div>
-            <a href="https://scribbattle.io" target="_blank" class="btn">Play Now</a>
+            <a href="https://github.com/gamedevgary" target="_blank" class="btn">View on GitHub</a>
           </div>
         </div>
 
         <div class="card">
-          <video class="card-media" autoplay loop muted playsinline>
-            <source src="assets/videos/gameplay.mp4" type="video/mp4">
-            <img src="https://via.placeholder.com/600x337/111/fff?text=Gameplay+Clip" alt="Current Project">
-          </video>
+          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=More+on+itch.io" alt="itch.io Profile">
           <div class="card-content">
-            <h3>Current Project</h3>
-            <p class="tagline">Working on something new. Check out the latest devlog to see what I'm experimenting with.</p>
+            <h3>More Projects</h3>
+            <p class="tagline">Check out my itch.io page to see my latest jam games, prototypes, and experiments as they happen.</p>
             <div class="tag-container">
-              <span class="badge">In Development</span>
+              <span class="badge">Indie Games</span>
             </div>
-            <a href="https://gamedevgary.itch.io" target="_blank" class="btn">View on itch.io</a>
+            <a href="https://gamedevgary.itch.io" target="_blank" class="btn">View my itch.io</a>
           </div>
         </div>
 
@@ -251,40 +277,52 @@
       <div class="grid">
         
         <div class="card">
-          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=Heightmaps" alt="50 Free Terrain Heightmaps">
+          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=Terrain+Heightmaps" alt="50 Free Terrain Heightmaps">
           <div class="card-content">
             <h3>50 Terrain Heightmaps</h3>
-            <p class="tagline">A massive pack of .PNG heightmaps ready to be dropped into Unreal Engine. Plus a full guide on how I made them.</p>
+            <p class="tagline">A massive pack of .PNG heightmaps ready to be dropped into Unreal Engine. Plus a full devlog tutorial on how I made them using Blender and GIMP.</p>
             <div class="tag-container">
               <span class="badge">Assets</span>
               <span class="badge">Tutorial</span>
               <span class="badge price">Free</span>
             </div>
-            <a href="https://gamedevgary.itch.io/50-free-terrain-heightmaps" target="_blank" class="btn">Download</a>
+            <a href="https://gamedevgary.itch.io/50-free-terrain-heightmaps" target="_blank" class="btn">Get the Pack</a>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Section: My Journey & Friends -->
+    <!-- Section: My Journey -->
     <section>
       <h2>My Dev Journey</h2>
-      <div class="journey-text">
-        <p>Like a lot of indie devs, I started out just wanting to know how game worlds were made. That curiosity turned into a massive rabbit hole of 3D modeling, texturing, and engine workflows.</p>
-        <p>I spent a long time just learning the quirks of Blender and GIMP, figuring out how to get assets looking right in Unreal Engine without artifacting. Now, I try to package up what I learn—whether that's a node setup in Blender or a full deployment pipeline for web apps like Scribbattle—so other people don't have to struggle through the same roadblocks.</p>
+      <div class="text-block">
+        <p>As a self-taught developer, my journey started from a simple curiosity about how game worlds were actually constructed. That curiosity quickly turned into a massive rabbit hole of 3D modeling, texturing, and engine workflows.</p>
+        <p>I spent a long time just learning the quirks of open-source tools like Blender and GIMP, figuring out how to get assets looking right in engines without artifacting. Now, I try to package up what I learn—whether that's a node setup in Blender or an entire project pipeline—so other devs don't have to hit the same roadblocks I did.</p>
       </div>
     </section>
 
+    <!-- Section: Community Resources -->
     <section>
-      <h2>Cool Stuff by Other People</h2>
-      <div class="journey-text">
-        <p>I wouldn't know half of what I do without the gamedev community. Here are a few folks and resources that I constantly rely on:</p>
-        <ul>
-          <li><strong><a href="https://www.youtube.com/user/DefaultCube" target="_blank">Default Cube</a>:</strong> Hands down one of the best YouTube channels for weird and highly practical Blender node setups.</li>
-          <li><strong>Your Dev Friends:</strong> (Add links to other indie devs you follow or whose games you play!)</li>
-        </ul>
+      <h2>Community & Resources</h2>
+      <div class="text-block">
+        <p>I wouldn't have gotten far without the amazing gamedev community. Here are some resources and places to connect:</p>
       </div>
+      
+      <ul class="resource-list">
+        <li>
+          <h3><a href="https://github.com/FronkonGames/Awesome-Gamedev" target="_blank">Awesome-Gamedev Repo</a></h3>
+          <p>An absolutely massive, curated list of game development resources spanning every engine, discipline, and tool you can think of.</p>
+        </li>
+        <li>
+          <h3><a href="https://www.youtube.com/user/DefaultCube" target="_blank">Default Cube</a></h3>
+          <p>Hands down one of the best YouTube channels out there for weird, fast, and highly practical Blender node setups.</p>
+        </li>
+        <li>
+          <h3><a href="https://gamedevgary.itch.io/" target="_blank">Follow me on itch.io</a></h3>
+          <p>The best place to find my devlogs, leave comments, and see what assets or games I'm putting out next.</p>
+        </li>
+      </ul>
     </section>
 
   </div>

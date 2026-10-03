@@ -3,250 +3,392 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameDevGary - Indie Game Developer</title>
+  <meta name="description" content="GameDevGary is an indie game developer creating games, tools, and free assets for the game development community.">
+  <meta name="theme-color" content="#222222">
+  <title>GameDevGary | Indie Game Developer</title>
   <style>
-    /* =========================================
-       ITCH.IO INSPIRED STYLES
-       ========================================= */
     :root {
-      --bg-color: #222222;
-      --surface-color: #2b2b2b;
-      --primary-color: #fa5c5c; /* Classic itch.io red/coral */
+      --bg-color: #1d1d1d;
+      --bg-accent: #2a2a2a;
+      --surface-color: #272727;
+      --surface-strong: #1f1f1f;
+      --primary-color: #fa5c5c;
+      --primary-strong: #ff7373;
       --text-main: #f4f4f4;
-      --text-muted: #b9b9b9;
+      --text-muted: #c2c2c2;
+      --text-soft: #9f9f9f;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --shadow: 0 18px 35px rgba(0, 0, 0, 0.28);
+      --radius: 14px;
+      --max-width: 1100px;
       --font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
+      background:
+        radial-gradient(circle at top, rgba(250, 92, 92, 0.14), transparent 25%),
+        linear-gradient(180deg, var(--bg-color) 0%, #141414 100%);
       color: var(--text-main);
       font-family: var(--font-family);
       line-height: 1.6;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     a {
       color: var(--primary-color);
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
     }
 
-    a:hover {
-      opacity: 0.8;
+    a:hover,
+    a:focus-visible {
+      opacity: 0.9;
     }
 
-    /* =========================================
-       HEADER & BIO
-       ========================================= */
-    header {
-      background-color: var(--surface-color);
-      border-bottom: 2px solid #1a1a1a;
-      padding: 50px 20px;
-      text-align: center;
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(250, 92, 92, 0.7);
+      outline-offset: 3px;
+    }
+
+    .site-header {
+      background: linear-gradient(180deg, rgba(39, 39, 39, 0.96), rgba(26, 26, 26, 0.96));
+      border-bottom: 1px solid var(--border-color);
+      padding: 64px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+      pointer-events: none;
     }
 
     .profile-container {
-      max-width: 700px;
+      max-width: var(--max-width);
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--primary-color);
+      font-weight: 700;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin: 0 0 10px 0;
+      font-size: clamp(2.5rem, 5vw, 4.25rem);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
     }
 
     .bio {
-      font-size: 1.15rem;
+      max-width: 720px;
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
       color: var(--text-muted);
-      margin-bottom: 25px;
+      margin: 0 0 28px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: var(--primary-color);
+      color: #fff;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      background: var(--primary-strong);
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--text-main);
     }
 
     .social-links {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 12px;
       list-style: none;
+      margin: 0;
       padding: 0;
     }
 
     .social-links a {
-      background: #1a1a1a;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
       color: var(--text-main);
+      font-weight: 700;
       font-size: 0.95rem;
     }
 
-    .social-links a:hover {
-      background: var(--primary-color);
+    .social-links a:hover,
+    .social-links a:focus-visible {
+      background: rgba(250, 92, 92, 0.12);
+      border-color: rgba(250, 92, 92, 0.3);
       color: #fff;
     }
 
-    /* =========================================
-       PAGE CONTENT & SECTIONS
-       ========================================= */
     .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 48px 24px 64px;
     }
 
-    h2 {
-      font-size: 1.5rem;
-      border-bottom: 2px solid #333;
-      padding-bottom: 8px;
-      margin-bottom: 25px;
+    .content-section + .content-section {
+      margin-top: 32px;
+    }
+
+    .section-heading {
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      margin: 0;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.08);
       color: #fff;
     }
 
-    /* =========================================
-       ITCH-STYLE GRID CARDS
-       ========================================= */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
-      margin-bottom: 60px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
     }
 
     .card {
-      background: var(--surface-color);
-      border-radius: 4px;
+      background: linear-gradient(180deg, rgba(46, 46, 46, 0.9), rgba(23, 23, 23, 0.9));
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
       overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 100%;
     }
 
-    .card:hover {
+    .card:hover,
+    .card:focus-within {
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.32);
     }
 
-    .card-media {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #111;
-      object-fit: cover;
-      display: block;
-      border-bottom: 1px solid #1a1a1a;
+    .card-visual {
+      height: 210px;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 55%);
+    }
+
+    .card-visual.terrain {
+      background:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)),
+        linear-gradient(120deg, #1f2937, #3a4a58 55%, #8a9aac);
+    }
+
+    .card-visual.itch {
+      background:
+        linear-gradient(135deg, rgba(250, 92, 92, 0.18), rgba(0, 0, 0, 0.18)),
+        linear-gradient(120deg, #242424, #3a3a3a 50%, #4a4a4a);
     }
 
     .card-content {
-      padding: 20px;
+      padding: 22px 20px 20px;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      height: calc(100% - 210px);
     }
 
     .card-content h3 {
-      margin: 0 0 8px 0;
-      font-size: 1.25rem;
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+      color: #fff;
     }
 
     .tagline {
-      font-size: 0.95rem;
       color: var(--text-muted);
-      margin: 0 0 15px 0;
+      font-size: 0.98rem;
+      margin: 0 0 16px;
       flex-grow: 1;
     }
 
     .tag-container {
       display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .badge {
-      background: #444;
-      font-size: 0.75rem;
-      padding: 4px 8px;
-      border-radius: 3px;
-      color: #ddd;
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid var(--border-color);
     }
-    
+
     .badge.price {
-      background: #3a5a40;
-      color: #95d5b2;
-      font-weight: bold;
+      background: rgba(76, 175, 80, 0.12);
+      border-color: rgba(76, 175, 80, 0.2);
+      color: #9fe7a8;
     }
 
-    .btn {
-      display: block;
-      text-align: center;
-      padding: 12px;
-      background: var(--primary-color);
-      color: #fff;
-      border-radius: 3px;
-      font-weight: bold;
+    .text-block {
+      margin-top: 22px;
     }
 
-    .btn:hover {
-      background: #ff7373;
-    }
-
-    /* =========================================
-       TEXT BLOCKS & LISTS
-       ========================================= */
     .text-block p {
+      margin: 0 0 18px;
+      color: var(--text-muted);
       font-size: 1.05rem;
-      margin-bottom: 15px;
     }
 
     .resource-list {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 24px 0 0;
+      display: grid;
+      gap: 16px;
     }
 
     .resource-list li {
-      background: var(--surface-color);
-      margin-bottom: 15px;
-      padding: 15px 20px;
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
       border-left: 4px solid var(--primary-color);
+      border-radius: 10px;
+      padding: 18px 20px;
     }
 
     .resource-list h3 {
-      margin: 0 0 5px 0;
+      margin: 0 0 8px;
       font-size: 1.15rem;
     }
-    
+
     .resource-list p {
       margin: 0;
       color: var(--text-muted);
-      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 18px 24px 30px;
+      text-align: center;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 680px) {
+      .site-header {
+        padding-top: 48px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .social-links a {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- Header & Bio -->
-  <header>
+  <header class="site-header">
     <div class="profile-container">
+      <p class="eyebrow">Indie game developer · tools · tutorials</p>
       <h1>GameDevGary</h1>
       <p class="bio">Hey there! I'm a self-taught indie game developer. I make games, build tools, and create free assets for other devs.</p>
-      
-      <ul class="social-links">
-        <li><a href="https://gamedevgary.itch.io/" target="_blank">itch.io</a></li>
-        <li><a href="https://github.com/gamedevgary" target="_blank">GitHub</a></li>
-        <li><a href="https://www.youtube.com/@GameDevGary" target="_blank">YouTube</a></li>
+
+      <div class="cta-row">
+        <a class="btn" href="https://gamedevgary.itch.io/" target="_blank" rel="noreferrer">Explore my games</a>
+        <a class="btn secondary" href="https://www.youtube.com/@GameDevGary" target="_blank" rel="noreferrer">Watch my videos</a>
+      </div>
+
+      <ul class="social-links" aria-label="Social links">
+        <li><a href="https://gamedevgary.itch.io/" target="_blank" rel="noreferrer">itch.io</a></li>
+        <li><a href="https://github.com/gamedevgary" target="_blank" rel="noreferrer">GitHub</a></li>
+        <li><a href="https://www.youtube.com/@GameDevGary" target="_blank" rel="noreferrer">YouTube</a></li>
       </ul>
     </div>
   </header>
 
-  <div class="container">
-    
-    <!-- Section: Assets & Tutorials -->
-    <section>
-      <h2>Assets & Tutorials</h2>
+  <main class="container">
+    <section class="content-section" aria-labelledby="assets-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Resources</p>
+        <h2 id="assets-heading">Assets &amp; Tutorials</h2>
+      </div>
+
       <div class="grid">
-        
-        <div class="card">
-          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=Terrain+Heightmaps" alt="50 Free Terrain Heightmaps">
+        <article class="card" aria-label="50 Terrain Heightmaps asset pack">
+          <div class="card-visual terrain" role="img" aria-label="Terrain heightmap abstract texture"></div>
           <div class="card-content">
             <h3>50 Terrain Heightmaps</h3>
             <p class="tagline">A massive pack of .PNG heightmaps ready to be dropped into Unreal Engine. Plus a full devlog tutorial on how I made them using Blender and GIMP.</p>
@@ -255,72 +397,86 @@
               <span class="badge">Tutorial</span>
               <span class="badge price">Free</span>
             </div>
-            <a href="https://gamedevgary.itch.io/50-free-terrain-heightmaps" target="_blank" class="btn">Get the Pack</a>
+            <a href="https://gamedevgary.itch.io/50-free-terrain-heightmaps" target="_blank" rel="noreferrer" class="btn">Get the Pack</a>
           </div>
-        </div>
-
+        </article>
       </div>
     </section>
 
-    <!-- Section: Games -->
-    <section>
-      <h2>Games & Prototypes</h2>
-      <div class="grid">
+    <section class="content-section" aria-labelledby="games-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Portfolio</p>
+        <h2 id="games-heading">Games &amp; Prototypes</h2>
+      </div>
 
-        <div class="card">
-          <img class="card-media" src="https://via.placeholder.com/600x337/111/fff?text=More+on+itch.io" alt="itch.io Profile">
+      <div class="grid">
+        <article class="card" aria-label="Current game projects">
+          <div class="card-visual itch" role="img" aria-label="Abstract itch.io profile placeholder"></div>
           <div class="card-content">
             <h3>Current Projects</h3>
             <p class="tagline">Check out my itch.io page to see my latest jam games, prototypes, and experiments as they happen.</p>
             <div class="tag-container">
               <span class="badge">Indie Games</span>
+              <span class="badge">Prototypes</span>
             </div>
-            <a href="https://gamedevgary.itch.io" target="_blank" class="btn">View my itch.io</a>
+            <a href="https://gamedevgary.itch.io" target="_blank" rel="noreferrer" class="btn">View my itch.io</a>
           </div>
-        </div>
-
+        </article>
       </div>
     </section>
 
-    <!-- Section: My Journey -->
-    <section>
-      <h2>My Dev Journey</h2>
+    <section class="content-section" aria-labelledby="journey-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Story</p>
+        <h2 id="journey-heading">My Dev Journey</h2>
+      </div>
+
       <div class="text-block">
-        <p>I started playing video games when I was 5 years old. The first games I remember playing are Legend of Zelda, Spyro, Crash Bandicoot, Mario, and Street Fighter. I'm 30 now, and I've played a lot of video games, and 15 years ago I decided to try to learn how to make them.</p>
+        <p>I started playing video games when I was 5 years old. The first games I remember playing are Legend of Zelda, Spyro, Crash Bandicoot, Mario, and Street Fighter. I'm 30 now, and I've learned how much creativity, curiosity, and persistence shape the work you make.</p>
 
-        <p>Started with googling in 2010, "how to make video games". Options at the time were licensing an expensive engine like Unreal or something, working at a company, or writing my own engine. Or use Unity and learn C#.</p>
+        <p>Started with googling in 2010, "how to make video games". Options at the time were licensing an expensive engine like Unreal or something, working at a company, or writing my own engine from scratch. I wanted to learn by doing, so I started teaching myself.</p>
 
-        <p>I googled C#, found a crash course, and taught myself programming. Downloaded Unity, started learning about 2D/3D scenes and how gameobjects and code go together and how to build them. I googled a lot of stuff about math, programming, art, computers, audio, design, story, cinematography, everything that goes into making games, I googled it. I have googled a lot.</p> 
+        <p>I googled C#, found a crash course, and taught myself programming. Downloaded Unity, started learning about 2D/3D scenes and how game objects and code go together and how to build them. That practical, chaotic learning process taught me far more than any single course ever could.</p>
 
-        <p>Learning game development or any kind of art or project you create with tools and your mind is the best way to learn anything. Learning how to teach yourself is the best skill to learn for anything.</p>
+        <p>Learning game development or any kind of art or project you create with tools and your mind is the best way to learn anything. Learning how to teach yourself is the best skill to learn, especially in a creative field where the best tools and workflows are always changing.</p>
 
-        <p>From the time I started playing video games, to the time I started making them, to now, everything I studied and learned has changed so much in ways that were always impossible to predict and keep up with what "the best way" to do anything was.</p>
+        <p>From the time I started playing video games, to the time I started making them, to now, everything I studied and learned has changed so much in ways that were always impossible to predict. That constant evolution is part of what keeps this work exciting.</p>
       </div>
     </section>
 
-    <!-- Section: Community Resources -->
-    <section>
-      <h2>Community & Resources</h2>
-      <div class="text-block">
-        <p>I wouldn't have gotten far without the amazing gamedev community. Here are some resources and places to connect:</p>
+    <section class="content-section" aria-labelledby="community-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Community</p>
+        <h2 id="community-heading">Community &amp; Resources</h2>
       </div>
-      
+
+      <div class="text-block">
+        <p>I wouldn't have gotten far without the amazing game development community. Here are some resources and places to connect:</p>
+      </div>
+
       <ul class="resource-list">
         <li>
-          <h3><a href="https://github.com/FronkonGames/Awesome-Gamedev" target="_blank">Awesome-Gamedev Repo</a></h3>
+          <h3><a href="https://github.com/FronkonGames/Awesome-Gamedev" target="_blank" rel="noreferrer">Awesome-Gamedev Repo</a></h3>
           <p>An absolutely massive, curated list of game development resources spanning every engine, discipline, and tool you can think of.</p>
         </li>
         <li>
-          <h3><a href="https://www.youtube.com/user/DefaultCube" target="_blank">Default Cube</a></h3>
+          <h3><a href="https://www.youtube.com/user/DefaultCube" target="_blank" rel="noreferrer">Default Cube</a></h3>
           <p>Hands down one of the best YouTube channels out there for weird, fast, and highly practical Blender node setups.</p>
         </li>
         <li>
-          <h3><a href="https://www.youtube.com/@GameDevGary" target="_blank">My YouTube Channel</a></h3>
+          <h3><a href="https://www.youtube.com/@GameDevGary" target="_blank" rel="noreferrer">My YouTube Channel</a></h3>
           <p>Subscribe to see my latest video tutorials, gameplay prototypes, and devlogs.</p>
         </li>
       </ul>
     </section>
+  </main>
 
-  </div>
+  <footer class="site-footer">
+    <p>© <span id="year"></span> GameDevGary</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

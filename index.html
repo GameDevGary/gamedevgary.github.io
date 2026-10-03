@@ -4,42 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GameDevGary is an indie game developer creating games, tools, and free assets for the game development community.">
-  <meta name="theme-color" content="#222222">
+  <meta name="theme-color" content="#101214">
   <title>GameDevGary | Indie Game Developer</title>
   <style>
     :root {
-      --bg-color: #1d1d1d;
-      --bg-accent: #2a2a2a;
-      --surface-color: #272727;
-      --surface-strong: #1f1f1f;
-      --primary-color: #fa5c5c;
-      --primary-strong: #ff7373;
-      --text-main: #f4f4f4;
-      --text-muted: #c2c2c2;
-      --text-soft: #9f9f9f;
-      --border-color: rgba(255, 255, 255, 0.08);
-      --shadow: 0 18px 35px rgba(0, 0, 0, 0.28);
-      --radius: 14px;
-      --max-width: 1100px;
-      --font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --bg: #0d0f12;
+      --bg-2: #12161b;
+      --panel: rgba(21, 25, 30, 0.87);
+      --panel-alt: rgba(29, 35, 41, 0.92);
+      --panel-soft: rgba(37, 44, 52, 0.9);
+      --fg: #f5f1eb;
+      --muted: #c6c2bc;
+      --soft: #9ea8b3;
+      --line: rgba(255,255,255,0.08);
+      --accent: #ff6b4a;
+      --accent-2: #ff9b70;
+      --accent-3: #f2c14e;
+      --success: #7dd3a6;
+      --shadow: 0 22px 50px rgba(0, 0, 0, 0.38);
+      --radius: 18px;
+      --max-width: 1160px;
+      --font: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       background:
-        radial-gradient(circle at top, rgba(250, 92, 92, 0.14), transparent 25%),
-        linear-gradient(180deg, var(--bg-color) 0%, #141414 100%);
-      color: var(--text-main);
-      font-family: var(--font-family);
+        radial-gradient(circle at top left, rgba(255, 107, 74, 0.12), transparent 24%),
+        radial-gradient(circle at top right, rgba(242, 193, 78, 0.09), transparent 18%),
+        linear-gradient(180deg, var(--bg) 0%, #0a0d0f 100%);
+      color: var(--fg);
+      font-family: var(--font);
       line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    a:hover, a:focus-visible { opacity: 0.92; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid rgba(255, 107, 74, 0.8);
+      outline-offset: 3px;
     }
 
     img {
@@ -47,108 +60,156 @@
       display: block;
     }
 
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-      transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
-    }
-
-    a:hover,
-    a:focus-visible {
-      opacity: 0.9;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid rgba(250, 92, 92, 0.7);
-      outline-offset: 3px;
-    }
-
     .site-header {
-      background: linear-gradient(180deg, rgba(39, 39, 39, 0.96), rgba(26, 26, 26, 0.96));
-      border-bottom: 1px solid var(--border-color);
-      padding: 64px 24px 48px;
       position: relative;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(17, 21, 25, 0.94), rgba(12, 15, 18, 0.88)),
+        linear-gradient(90deg, rgba(255,255,255,0.025), rgba(255,255,255,0.0));
       overflow: hidden;
     }
 
-    .site-header::after {
+    .site-header::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at center, black 25%, transparent 100%);
       pointer-events: none;
     }
 
-    .profile-container {
+    .header-inner,
+    .container,
+    .site-footer {
       max-width: var(--max-width);
       margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .header-inner {
       position: relative;
       z-index: 1;
+      padding-top: 40px;
+      padding-bottom: 28px;
     }
 
-    .eyebrow {
-      margin: 0 0 14px;
-      letter-spacing: 0.12em;
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.72rem;
-      color: var(--primary-color);
-      font-weight: 700;
+      color: var(--fg);
+      font-size: 0.78rem;
     }
 
-    h1 {
-      font-size: clamp(2.5rem, 5vw, 4.25rem);
-      line-height: 1.05;
-      margin: 0 0 12px;
-      letter-spacing: -0.04em;
+    .brand-mark {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      box-shadow: 0 0 16px rgba(255, 107, 74, 0.8);
     }
 
-    .bio {
-      max-width: 720px;
-      font-size: clamp(1.08rem, 2vw, 1.35rem);
-      color: var(--text-muted);
-      margin: 0 0 28px;
-    }
-
-    .cta-row {
+    .topbar-links {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 24px;
+      align-items: center;
+    }
+
+    .topbar-links a {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 0.72rem;
+      color: var(--accent-2);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      color: #fff;
+    }
+
+    .bio {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      min-height: 48px;
       padding: 12px 22px;
       border-radius: 999px;
-      background: var(--primary-color);
-      color: #fff;
-      font-weight: 700;
       border: 1px solid transparent;
-    }
-
-    .btn:hover,
-    .btn:focus-visible {
-      background: var(--primary-strong);
-      transform: translateY(-1px);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 12px 28px rgba(255, 107, 74, 0.22);
     }
 
     .btn.secondary {
-      background: transparent;
-      border-color: rgba(255, 255, 255, 0.2);
-      color: var(--text-main);
+      background: rgba(255,255,255,0.02);
+      color: var(--fg);
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
+    .btn:hover, .btn:focus-visible {
+      transform: translateY(-1px);
     }
 
     .social-links {
+      list-style: none;
+      padding: 0;
+      margin: 26px 0 0;
       display: flex;
-      justify-content: flex-start;
       flex-wrap: wrap;
       gap: 12px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
     }
 
     .social-links a {
@@ -156,73 +217,134 @@
       align-items: center;
       justify-content: center;
       min-height: 42px;
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      color: var(--fg);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
-    .social-links a:hover,
-    .social-links a:focus-visible {
-      background: rgba(250, 92, 92, 0.12);
-      border-color: rgba(250, 92, 92, 0.3);
+    .social-links a:hover, .social-links a:focus-visible {
+      background: rgba(255, 107, 74, 0.12);
+      border-color: rgba(255, 107, 74, 0.35);
       color: #fff;
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(27, 33, 39, 0.96), rgba(17, 22, 27, 0.92));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .mini-visual {
+      min-height: 220px;
+      background:
+        linear-gradient(135deg, rgba(255, 107, 74, 0.18), rgba(255, 255, 255, 0.02)),
+        linear-gradient(120deg, #171c20 0%, #233145 40%, #8d96a5 100%);
+      position: relative;
+    }
+
+    .mini-visual::before {
+      content: "";
+      position: absolute;
+      inset: 20px 20px 40px 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      background: linear-gradient(140deg, rgba(0,0,0,0.16), rgba(255,255,255,0.03));
+    }
+
+    .mini-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.28));
+    }
+
+    .panel-body {
+      padding: 20px 20px 22px;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .stat {
+      padding: 12px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .stat span {
+      color: var(--soft);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 48px 24px 64px;
+      padding-top: 42px;
+      padding-bottom: 62px;
     }
 
     .content-section + .content-section {
-      margin-top: 32px;
+      margin-top: 42px;
     }
 
-    .section-heading {
-      margin-bottom: 20px;
+    .section-header {
+      margin-bottom: 18px;
     }
 
-    .section-heading h2 {
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
+    .section-header h2 {
       margin: 0;
       padding-bottom: 12px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.08);
-      color: #fff;
+      border-bottom: 1px solid var(--line);
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      letter-spacing: -0.04em;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
-      margin-top: 24px;
+      margin-top: 20px;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(46, 46, 46, 0.9), rgba(23, 23, 23, 0.9));
-      border: 1px solid var(--border-color);
+      background: linear-gradient(180deg, rgba(29, 35, 41, 0.96), rgba(18, 22, 27, 0.94));
+      border: 1px solid var(--line);
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
       min-height: 100%;
     }
 
-    .card:hover,
-    .card:focus-within {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.32);
+    .card:hover, .card:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(255, 107, 74, 0.38);
     }
 
     .card-visual {
-      height: 210px;
-      background-size: cover;
-      background-position: center;
-      border-bottom: 1px solid var(--border-color);
       position: relative;
+      min-height: 220px;
+      border-bottom: 1px solid var(--line);
       overflow: hidden;
     }
 
@@ -230,38 +352,39 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 55%);
+      background: linear-gradient(140deg, rgba(255,255,255,0.08), transparent 55%);
     }
 
     .card-visual.terrain {
       background:
-        linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)),
-        linear-gradient(120deg, #1f2937, #3a4a58 55%, #8a9aac);
+        linear-gradient(135deg, rgba(255, 107, 74, 0.1), rgba(0, 0, 0, 0.2)),
+        linear-gradient(120deg, #111821 0%, #2d3d4c 52%, #9aa9b5 100%);
     }
 
     .card-visual.itch {
       background:
-        linear-gradient(135deg, rgba(250, 92, 92, 0.18), rgba(0, 0, 0, 0.18)),
-        linear-gradient(120deg, #242424, #3a3a3a 50%, #4a4a4a);
+        linear-gradient(135deg, rgba(255, 155, 112, 0.14), rgba(0,0,0,0.18)),
+        linear-gradient(120deg, #181d22 0%, #2a2d31 52%, #5a5f66 100%);
     }
 
     .card-content {
-      padding: 22px 20px 20px;
       display: flex;
       flex-direction: column;
-      height: calc(100% - 210px);
+      flex: 1;
+      padding: 22px 20px 20px;
     }
 
     .card-content h3 {
-      margin: 0 0 12px;
-      font-size: 1.4rem;
+      margin: 0 0 10px;
       color: #fff;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
     }
 
     .tagline {
-      color: var(--text-muted);
-      font-size: 0.98rem;
-      margin: 0 0 16px;
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 1rem;
       flex-grow: 1;
     }
 
@@ -273,115 +396,179 @@
     }
 
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text-main);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      color: var(--fg);
       font-size: 0.7rem;
-      letter-spacing: 0.04em;
       text-transform: uppercase;
-      border: 1px solid var(--border-color);
+      letter-spacing: 0.08em;
     }
 
     .badge.price {
-      background: rgba(76, 175, 80, 0.12);
-      border-color: rgba(76, 175, 80, 0.2);
-      color: #9fe7a8;
+      background: rgba(125, 211, 166, 0.12);
+      border-color: rgba(125, 211, 166, 0.28);
+      color: #b8f0d0;
+    }
+
+    .card .btn {
+      width: 100%;
+      margin-top: auto;
     }
 
     .text-block {
-      margin-top: 22px;
+      margin-top: 16px;
     }
 
     .text-block p {
       margin: 0 0 18px;
-      color: var(--text-muted);
-      font-size: 1.05rem;
+      color: var(--muted);
+      font-size: 1.08rem;
     }
 
     .resource-list {
       list-style: none;
+      margin: 0;
       padding: 0;
-      margin: 24px 0 0;
       display: grid;
       gap: 16px;
+      margin-top: 22px;
     }
 
     .resource-list li {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--primary-color);
-      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
       padding: 18px 20px;
     }
 
     .resource-list h3 {
       margin: 0 0 8px;
+      color: #fff;
       font-size: 1.15rem;
     }
 
     .resource-list p {
       margin: 0;
-      color: var(--text-muted);
-      line-height: 1.6;
+      color: var(--muted);
     }
 
     .site-footer {
-      border-top: 1px solid var(--border-color);
-      padding: 18px 24px 30px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      padding-bottom: 34px;
+      color: var(--soft);
       text-align: center;
-      color: var(--text-soft);
+      font-size: 0.96rem;
     }
 
-    @media (max-width: 680px) {
-      .site-header {
-        padding-top: 48px;
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
       }
 
-      .cta-row {
-        flex-direction: column;
-        align-items: stretch;
+      .hero-panel {
+        max-width: 520px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner,
+      .container,
+      .site-footer {
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
-      .btn {
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .topbar-links {
         width: 100%;
       }
 
+      .hero-actions,
       .social-links {
         flex-direction: column;
-        align-items: stretch;
       }
 
+      .hero-actions .btn,
       .social-links a {
         width: 100%;
+      }
+
+      .stat-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="profile-container">
-      <p class="eyebrow">Indie game developer · tools · tutorials</p>
-      <h1>GameDevGary</h1>
-      <p class="bio">Hey there! I'm a self-taught indie game developer. I make games, build tools, and create free assets for other devs.</p>
-
-      <div class="cta-row">
-        <a class="btn" href="https://gamedevgary.itch.io/" target="_blank" rel="noreferrer">Explore my games</a>
-        <a class="btn secondary" href="https://www.youtube.com/@GameDevGary" target="_blank" rel="noreferrer">Watch my videos</a>
+    <div class="header-inner">
+      <div class="topbar">
+        <div class="brand" aria-label="GameDevGary home">
+          <span class="brand-mark"></span>
+          <span>GameDevGary</span>
+        </div>
+        <nav class="topbar-links" aria-label="Main navigation">
+          <a href="#assets">Assets</a>
+          <a href="#games">Games</a>
+          <a href="#journey">Journey</a>
+          <a href="#community">Community</a>
+        </nav>
       </div>
 
-      <ul class="social-links" aria-label="Social links">
-        <li><a href="https://gamedevgary.itch.io/" target="_blank" rel="noreferrer">itch.io</a></li>
-        <li><a href="https://github.com/gamedevgary" target="_blank" rel="noreferrer">GitHub</a></li>
-        <li><a href="https://www.youtube.com/@GameDevGary" target="_blank" rel="noreferrer">YouTube</a></li>
-      </ul>
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Indie game developer · tools · tutorials</p>
+          <h1>GameDevGary</h1>
+          <p class="bio">Hey there! I'm a self-taught indie game developer. I make games, build tools, and create free assets for other devs.</p>
+
+          <div class="hero-actions">
+            <a class="btn" href="https://gamedevgary.itch.io/" target="_blank" rel="noreferrer">Explore my games</a>
+            <a class="btn secondary" href="https://www.youtube.com/@GameDevGary" target="_blank" rel="noreferrer">Watch my videos</a>
+          </div>
+
+          <ul class="social-links" aria-label="Social links">
+            <li><a href="https://gamedevgary.itch.io/" target="_blank" rel="noreferrer">itch.io</a></li>
+            <li><a href="https://github.com/gamedevgary" target="_blank" rel="noreferrer">GitHub</a></li>
+            <li><a href="https://www.youtube.com/@GameDevGary" target="_blank" rel="noreferrer">YouTube</a></li>
+          </ul>
+        </div>
+
+        <aside class="hero-panel" aria-label="Quick overview">
+          <div class="mini-visual" role="img" aria-label="Abstract game development inspired background"></div>
+          <div class="panel-body">
+            <div class="stat-row">
+              <div class="stat">
+                <strong>Free</strong>
+                <span>Assets</span>
+              </div>
+              <div class="stat">
+                <strong>Game</strong>
+                <span>Dev</span>
+              </div>
+              <div class="stat">
+                <strong>DIY</strong>
+                <span>Mindset</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <section class="content-section" aria-labelledby="assets-heading">
-      <div class="section-heading">
+    <section class="content-section" id="assets" aria-labelledby="assets-heading">
+      <div class="section-header">
         <p class="eyebrow">Resources</p>
         <h2 id="assets-heading">Assets &amp; Tutorials</h2>
       </div>
@@ -403,15 +590,15 @@
       </div>
     </section>
 
-    <section class="content-section" aria-labelledby="games-heading">
-      <div class="section-heading">
+    <section class="content-section" id="games" aria-labelledby="games-heading">
+      <div class="section-header">
         <p class="eyebrow">Portfolio</p>
         <h2 id="games-heading">Games &amp; Prototypes</h2>
       </div>
 
       <div class="grid">
         <article class="card" aria-label="Current game projects">
-          <div class="card-visual itch" role="img" aria-label="Abstract itch.io profile placeholder"></div>
+          <div class="card-visual itch" role="img" aria-label="Abstract itch.io board preview"></div>
           <div class="card-content">
             <h3>Current Projects</h3>
             <p class="tagline">Check out my itch.io page to see my latest jam games, prototypes, and experiments as they happen.</p>
@@ -425,8 +612,8 @@
       </div>
     </section>
 
-    <section class="content-section" aria-labelledby="journey-heading">
-      <div class="section-heading">
+    <section class="content-section" id="journey" aria-labelledby="journey-heading">
+      <div class="section-header">
         <p class="eyebrow">Story</p>
         <h2 id="journey-heading">My Dev Journey</h2>
       </div>
@@ -444,8 +631,8 @@
       </div>
     </section>
 
-    <section class="content-section" aria-labelledby="community-heading">
-      <div class="section-heading">
+    <section class="content-section" id="community" aria-labelledby="community-heading">
+      <div class="section-header">
         <p class="eyebrow">Community</p>
         <h2 id="community-heading">Community &amp; Resources</h2>
       </div>
